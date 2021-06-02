@@ -24,7 +24,7 @@ services:
      environment:
        REDMINE_DB_POSTGRES: "postgres"
        REDMINE_DB_USERNAME: "postgres"
-       REDMINE_DB_PASSWORD: "Adminavlipro1"
+       REDMINE_DB_PASSWORD: "password"
        REDMINE_DB_DATABASE: "redmine"
        REDMINE_SECRET_KEY_BASE: "…"
        REDMINE_PLUGINS_MIGRATE: "true"
