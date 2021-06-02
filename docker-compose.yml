@@ -5,14 +5,16 @@ services:
      volumes:
        - ./storage/postgresql-data:/var/lib/postgresql/data
      environment:
-       POSTGRES_PASSWORD: "werwer"
+       POSTGRES_PASSWORD: "password"
        POSTGRES_DB: "redmine"
        PGDATA: "/var/lib/postgresql/data"
+       
      restart: always
    redmine:
      build:
        context: .
-     image: redmine:custom
+     image: boomtop/redmine_libreo:v2
+
      ports:
        - 80:3000
      volumes:
@@ -25,4 +27,5 @@ services:
        REDMINE_DB_PASSWORD: "Adminavlipro1"
        REDMINE_DB_DATABASE: "redmine"
        REDMINE_SECRET_KEY_BASE: "…"
+       REDMINE_PLUGINS_MIGRATE: "true"
      restart: always
