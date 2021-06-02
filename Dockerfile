@@ -1,2 +1,1 @@
-FROM redmine:latest
-RUN apt-get update
+FROM boomtop/redmine_libreo:latest
