@@ -1,6 +1,8 @@
+
 version: '3.3'
 services:
    postgres:
+     container_name: postgres
      image: postgres:13.3
      volumes:
        - ./storage/postgresql-data:/var/lib/postgresql/data
@@ -8,19 +10,23 @@ services:
        POSTGRES_PASSWORD: "password"
        POSTGRES_DB: "redmine"
        PGDATA: "/var/lib/postgresql/data"
-       
+
      restart: always
    redmine:
+     container_name: redmine
      build:
        context: .
-     image: boomtop/redmine_libreo:v2
+     image: boomtop/redmine_libreo:work
 
      ports:
        - 80:3000
      volumes:
+       - ./storage/docker_redmine-config/configuration.yml:/usr/src/redmine/config/configuration.yml
        - ./storage/docker_redmine-plugins:/usr/src/redmine/plugins
        - ./storage/docker_redmine-themes:/usr/src/redmine/public/themes
        - ./storage/docker_redmine-data:/usr/src/redmine/files
+    
+
      environment:
        REDMINE_DB_POSTGRES: "postgres"
        REDMINE_DB_USERNAME: "postgres"
